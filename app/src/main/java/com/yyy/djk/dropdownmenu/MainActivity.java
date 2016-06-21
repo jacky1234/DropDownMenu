@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         contentView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
         //init dropdownview
-        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews, contentView);
+        mDropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews);
     }
 
     @Override

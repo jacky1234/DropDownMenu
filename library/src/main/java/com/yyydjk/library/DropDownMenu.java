@@ -85,18 +85,18 @@ public class DropDownMenu extends LinearLayout {
         tabMenuView.setOrientation(HORIZONTAL);
         tabMenuView.setBackgroundColor(menuBackgroundColor);
         tabMenuView.setLayoutParams(params);
-        addView(tabMenuView, 0);
+        addView(tabMenuView);
 
         //为tabMenuView添加下划线
         View underLine = new View(getContext());
         underLine.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dpTpPx(1.0f)));
         underLine.setBackgroundColor(underlineColor);
-        addView(underLine, 1);
+        addView(underLine);
 
         //初始化containerView并将其添加到DropDownMenu
         containerView = new FrameLayout(context);
         containerView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-        addView(containerView, 2);
+        addView(containerView);
 
     }
 
@@ -105,9 +105,8 @@ public class DropDownMenu extends LinearLayout {
      *
      * @param tabTexts
      * @param popupViews
-     * @param contentView
      */
-    public void setDropDownMenu(@NonNull List<String> tabTexts, @NonNull List<View> popupViews, @NonNull View contentView) {
+    public void setDropDownMenu(@NonNull List<String> tabTexts, @NonNull List<View> popupViews) {
         if (tabTexts.size() != popupViews.size()) {
             throw new IllegalArgumentException("params not match, tabTexts.size() should be equal popupViews.size()");
         }
@@ -115,7 +114,6 @@ public class DropDownMenu extends LinearLayout {
         for (int i = 0; i < tabTexts.size(); i++) {
             addTab(tabTexts, i);
         }
-        containerView.addView(contentView, 0);
 
         maskView = new View(getContext());
         maskView.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
@@ -126,12 +124,12 @@ public class DropDownMenu extends LinearLayout {
                 closeMenu();
             }
         });
-        containerView.addView(maskView, 1);
+        containerView.addView(maskView);
         maskView.setVisibility(GONE);
 
         popupMenuViews = new FrameLayout(getContext());
         popupMenuViews.setVisibility(GONE);
-        containerView.addView(popupMenuViews, 2);
+        containerView.addView(popupMenuViews);
 
         for (int i = 0; i < popupViews.size(); i++) {
             popupViews.get(i).setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
